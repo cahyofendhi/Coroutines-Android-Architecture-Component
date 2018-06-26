@@ -13,7 +13,7 @@ import bcr.coroutinesaac.adapter.TextWatcherAdapter
 import bcr.coroutinesaac.model.Repository
 import bcr.coroutinesaac.repository.MainRepository
 
-class MainViewModel(var context: Context, application: Application) : AndroidViewModel(application) {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     var infoMessage: ObservableField<String> = ObservableField(application.getString(R.string.default_info_message))
     var isInfo: ObservableBoolean = ObservableBoolean(true)
@@ -25,7 +25,7 @@ class MainViewModel(var context: Context, application: Application) : AndroidVie
     var mDataObservable: MutableLiveData<List<Repository>>? = MutableLiveData()
 
     val repository : MainRepository by lazy {
-        MainRepository.getInstance(context)
+        MainRepository.getInstance(getApplication())
     }
 
     fun onClickSearch(view: View) {
@@ -60,18 +60,12 @@ class MainViewModel(var context: Context, application: Application) : AndroidVie
 
     companion object {
 
-        public class Factory: ViewModelProvider.NewInstanceFactory {
+        class Factory(@NonNull application: Application) : ViewModelProvider.NewInstanceFactory() {
 
-            var mApplication: Application? = null
-            var mContext: Context? = null
-
-            constructor(context: Context, @NonNull application: Application){
-                this.mContext = context
-                this.mApplication = application
-            }
+            var mApplication: Application? = application
 
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return MainViewModel(mContext!!, mApplication!!) as T
+                return MainViewModel(mApplication!!) as T
             }
 
         }

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val factory = MainViewModel.Companion.Factory(this, application)
+        val factory = MainViewModel.Companion.Factory(application)
         val viewModel = getActivityFactoryViewModel<MainViewModel>(factory)
         binding.vm  = viewModel
         viewModel.mDataObservable?.observe(this, Observer<List<Repository>> { t ->
