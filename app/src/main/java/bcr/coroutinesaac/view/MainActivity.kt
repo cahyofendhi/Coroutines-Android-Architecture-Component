@@ -9,7 +9,6 @@ import bcr.coroutinesaac.R
 import bcr.coroutinesaac.databinding.ActivityMainBinding
 import bcr.coroutinesaac.model.Repository
 import bcr.coroutinesaac.util.Util
-import bcr.coroutinesaac.util.debug
 import bcr.coroutinesaac.util.getActivityFactoryViewModel
 import bcr.coroutinesaac.view.adapter.RepositoryAdapter
 import bcr.coroutinesaac.viewmodel.MainViewModel
@@ -44,8 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRepositoriesChanged(repositories: List<Repository>) {
-        adapter?.setRepositories(repositories)
-        adapter?.notifyDataSetChanged()
+        adapter.setRepositories(repositories)
+        adapter.notifyDataSetChanged()
         Util.hideSoftKeyboard(this, binding.editTextUsername)
     }
 
