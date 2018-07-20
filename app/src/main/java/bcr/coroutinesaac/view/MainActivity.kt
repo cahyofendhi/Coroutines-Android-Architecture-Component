@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    
+
     private fun setupRecycleView() {
         adapter = RepositoryAdapter()
         binding.reposRecyclerView.adapter = adapter
