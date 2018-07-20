@@ -32,7 +32,7 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
         return repositories.size
     }
 
-    class ViewHolder(var binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.cardView) {
+    class ViewHolder(var binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindRepository(repository: Repository) {
             if (binding.vm == null){

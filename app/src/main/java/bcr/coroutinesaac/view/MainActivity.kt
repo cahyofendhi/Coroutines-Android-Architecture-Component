@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRepositoriesChanged(repositories: List<Repository>) {
-        adapter?.setRepositories(repositories)
-        adapter?.notifyDataSetChanged()
+        adapter.setRepositories(repositories)
+        adapter.notifyDataSetChanged()
         Util.hideSoftKeyboard(this, binding.editTextUsername)
     }
 
